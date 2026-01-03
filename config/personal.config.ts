@@ -1,4 +1,4 @@
-import type { PersonalConfig } from "@/types"
+import type { PersonalConfig } from "@/types";
 
 export const personalConfig: PersonalConfig = {
   name: "Ahmad Abotrab",
@@ -18,9 +18,9 @@ export const personalConfig: PersonalConfig = {
   about: {
     title: "About Me",
     paragraphs: [
-      "I'm a passionate developer focused on creating accessible, pixel-perfect user interfaces that blend thoughtful design with robust engineering. My favorite work lies at the intersection of design and development, creating experiences that not only look great but are meticulously built for performance and usability.",
-      "Currently, I'm focused on building comprehensive management systems and data-driven applications. I've had the opportunity to develop software across a variety of settings — from startups to established companies, working with diverse tech stacks and solving complex problems.",
-      "In my spare time, I'm usually exploring new technologies, contributing to open-source projects, or pursuing my Master's degree in Informatics.",
+      "A tech professional with a foundation in full-stack development (PHP, Laravel, and Symfony), I bridge the gap between software engineering and data-driven decision making. My experience leading teams and optimizing software to be more efficient and handle a large scale of users.",
+      "What truly drives me is data. I am curious about discovering insights, automating processes. from scripting with Python and SQL to building dashboards.I really enjoy turning data into intelligent strategies and technology that enhance business outcomes and insight has greate benefits for bussiness.",
+      "I am strongly interested in collaborating on projects at the intersection of software development and data science—whether it’s designing analytical tools, refining algorithms for smarter applications, or delivering insights that inform critical decisions.",
     ],
     image: "/images/profile/avatar.jpg",
     resumeUrl: "/resume.pdf",
@@ -28,8 +28,16 @@ export const personalConfig: PersonalConfig = {
 
   social: [
     { platform: "github", url: "https://github.com/mohammed", icon: "Github" },
-    { platform: "linkedin", url: "https://linkedin.com/in/mohammed", icon: "Linkedin" },
-    { platform: "twitter", url: "https://twitter.com/mohammed", icon: "Twitter" },
+    {
+      platform: "linkedin",
+      url: "https://linkedin.com/in/mohammed",
+      icon: "Linkedin",
+    },
+    {
+      platform: "twitter",
+      url: "https://twitter.com/mohammed",
+      icon: "Twitter",
+    },
     { platform: "email", url: "mailto:mohammed@example.com", icon: "Mail" },
   ],
 
@@ -40,4 +48,4 @@ export const personalConfig: PersonalConfig = {
     email: "mohammed@example.com",
     phone: "+90 xxx xxx xxxx",
   },
-}
+};
