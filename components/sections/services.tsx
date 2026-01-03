@@ -1,13 +1,20 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { motion } from "framer-motion"
-import { useInView } from "framer-motion"
-import { useRef } from "react"
-import { Code, Server, Database, Smartphone, Cloud, BarChart3 } from "lucide-react"
-import { servicesConfig } from "@/config/services.config"
-import type { Service } from "@/types"
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
+import {
+  Code,
+  Server,
+  Database,
+  Smartphone,
+  Cloud,
+  BarChart3,
+} from "lucide-react";
+import { servicesConfig } from "@/config/services.config";
+import type { Service } from "@/types";
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Code,
@@ -16,12 +23,12 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Smartphone,
   Cloud,
   BarChart: BarChart3,
-}
+};
 
 function ServiceCard({ service, index }: { service: Service; index: number }) {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: "-50px" })
-  const Icon = iconMap[service.icon]
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const Icon = iconMap[service.icon];
 
   return (
     <motion.div
@@ -36,24 +43,31 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
           className="w-12 h-12 rounded-lg flex items-center justify-center mb-4 transition-transform group-hover:scale-110"
           style={{ backgroundColor: `${service.color}20` }}
         >
-          {Icon && <Icon className="h-6 w-6" style={{ color: service.color }} />}
+          {Icon && (
+            <Icon className="h-6 w-6" style={{ color: service.color }} />
+          )}
         </div>
 
-        <h3 className="text-lg font-semibold text-foreground mb-2">{service.title}</h3>
+        <h3 className="text-lg font-semibold text-foreground mb-2">
+          {service.title}
+        </h3>
 
-        <p className="text-muted-foreground text-sm leading-relaxed">{service.description}</p>
+        <p className="text-muted-foreground text-sm leading-relaxed">
+          {service.description}
+        </p>
       </div>
     </motion.div>
-  )
+  );
 }
 
 export function ServicesSection() {
-  const { title, subtitle, services } = servicesConfig
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: "-100px" })
+  const { title, subtitle, services } = servicesConfig;
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="services" className="py-20 lg:py-32" ref={ref}>
+    //py-20 lg:py-32
+    <section id="services" className="" ref={ref}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -61,8 +75,12 @@ export function ServicesSection() {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-4">{title}</h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">{subtitle}</p>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-4">
+            {title}
+          </h2>
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            {subtitle}
+          </p>
         </motion.div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -72,5 +90,5 @@ export function ServicesSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
