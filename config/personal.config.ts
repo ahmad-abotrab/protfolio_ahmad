@@ -1,10 +1,10 @@
 import type { PersonalConfig } from "@/types"
 
 export const personalConfig: PersonalConfig = {
-  name: "Mohammed",
-  title: "Full Stack Developer",
+  name: "Ahmad Abotrab",
+  title: "",
   subtitle: "Software Engineer | Data Analyst",
-  location: "Turkey",
+  location: "Damascus,Syria",
 
   hero: {
     greeting: "Hi, I'm",

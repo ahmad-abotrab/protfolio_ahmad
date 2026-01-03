@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 import { ArrowDown, FileText } from "lucide-react"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { SocialLinks } from "@/components/ui/social-links"
 import { personalConfig } from "@/config/personal.config"
@@ -114,9 +115,15 @@ export function HeroSection() {
               <div className="absolute inset-0 -m-8 border-2 border-primary/20 rounded-full animate-pulse" />
               <div className="absolute inset-0 -m-16 border border-primary/10 rounded-full" />
 
-              {/* Avatar placeholder */}
-              <div className="w-64 h-64 sm:w-80 sm:h-80 rounded-full bg-gradient-to-br from-primary/20 to-primary/5 border-2 border-primary/30 flex items-center justify-center">
-                <span className="text-6xl sm:text-8xl font-bold text-primary/50">{name.charAt(0)}</span>
+              <div className="w-64 h-64 sm:w-80 sm:h-80 rounded-full bg-gradient-to-br from-primary/20 to-primary/5 border-2 border-primary/30 relative overflow-hidden">
+                <Image
+                  src="/ahmad.png"
+                  alt={`${name} avatar`}
+                  fill
+                  sizes="(min-width:1024px) 20rem, 16rem"
+                  className="rounded-full object-cover"
+                  priority
+                />
               </div>
             </div>
           </motion.div>
