@@ -57,10 +57,10 @@ export function Navbar() {
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo / Name */}
-          <Link href="#" className="flex items-center gap-2 group">
+          {/* <Link href="#" className="flex items-center gap-2 group">
             <span className="text-lg font-bold text-foreground">{personalConfig.name}</span>
             <span className="text-sm text-muted-foreground hidden sm:inline">{personalConfig.title}</span>
-          </Link>
+          </Link> */}
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex flex-1 items-center justify-center">
@@ -100,7 +100,7 @@ export function Navbar() {
           </div>
 
           {/* Theme Toggle & Mobile Menu Button */}
-          <div className="flex items-center gap-2">
+          {/* <div className="flex items-center gap-2">
             {mounted && (
               <Button
                 variant="ghost"
@@ -122,7 +122,7 @@ export function Navbar() {
             >
               {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </Button>
-          </div>
+          </div> */}
         </div>
 
         {/* Mobile Navigation */}

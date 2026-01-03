@@ -12,6 +12,7 @@ type Particle = {
 export function ConstellationBackground() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
   const animationRef = useRef<number | null>(null)
+  const mouseRef = useRef<{ x: number; y: number; active: boolean }>({ x: 0, y: 0, active: false })
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -34,6 +35,7 @@ export function ConstellationBackground() {
     const maxSpeed = isMobile ? 0.3 : 0.5
     const connectDist = isMobile ? 90 : 120
     const dotRadius = 1.4
+    const pointerDist = connectDist * 1.4
 
     const particles: Particle[] = Array.from({ length: count }, () => ({
       x: Math.random() * canvas.width,
@@ -67,11 +69,45 @@ export function ConstellationBackground() {
       }
       ctx.globalAlpha = 1
 
+      // Pointer connections and influence
+      const mouse = mouseRef.current
+      if (mouse.active) {
+        for (let i = 0; i < particles.length; i++) {
+          const p = particles[i]
+          const dx = p.x - mouse.x
+          const dy = p.y - mouse.y
+          const dist = Math.sqrt(dx * dx + dy * dy)
+          if (dist < pointerDist) {
+            const alpha = 1 - dist / pointerDist
+            ctx.globalAlpha = alpha
+            ctx.beginPath()
+            ctx.moveTo(mouse.x, mouse.y)
+            ctx.lineTo(p.x, p.y)
+            ctx.strokeStyle = lineColor
+            ctx.stroke()
+            ctx.globalAlpha = 1
+            const force = alpha * 0.03
+            p.vx -= dx * force * 0.001
+            p.vy -= dy * force * 0.001
+            if (p.vx > maxSpeed) p.vx = maxSpeed
+            if (p.vx < -maxSpeed) p.vx = -maxSpeed
+            if (p.vy > maxSpeed) p.vy = maxSpeed
+            if (p.vy < -maxSpeed) p.vy = -maxSpeed
+          }
+        }
+      }
+      ctx.globalAlpha = 1
+
       // Draw dots and update positions
       ctx.fillStyle = dotColor
       for (const p of particles) {
+        const dxm = p.x - mouseRef.current.x
+        const dym = p.y - mouseRef.current.y
+        const dm = Math.sqrt(dxm * dxm + dym * dym)
+        const nearMouse = mouseRef.current.active && dm < pointerDist
+        const r = nearMouse ? dotRadius + (1 - dm / pointerDist) * 1.5 : dotRadius
         ctx.beginPath()
-        ctx.arc(p.x, p.y, dotRadius, 0, Math.PI * 2)
+        ctx.arc(p.x, p.y, r, 0, Math.PI * 2)
         ctx.fill()
 
         p.x += p.vx
@@ -89,10 +125,28 @@ export function ConstellationBackground() {
       resize()
     }
     window.addEventListener("resize", onResize)
+    const onMove = (e: PointerEvent) => {
+      mouseRef.current.x = e.clientX
+      mouseRef.current.y = e.clientY
+      mouseRef.current.active = true
+      const xPct = (e.clientX / window.innerWidth) * 100
+      const yPct = (e.clientY / window.innerHeight) * 100
+      document.documentElement.style.setProperty("--mouse-x", `${xPct}%`)
+      document.documentElement.style.setProperty("--mouse-y", `${yPct}%`)
+    }
+    const onLeave = () => {
+      mouseRef.current.active = false
+    }
+    window.addEventListener("pointermove", onMove)
+    window.addEventListener("pointerleave", onLeave)
+    window.addEventListener("blur", onLeave)
 
     return () => {
       if (animationRef.current) cancelAnimationFrame(animationRef.current)
       window.removeEventListener("resize", onResize)
+      window.removeEventListener("pointermove", onMove)
+      window.removeEventListener("pointerleave", onLeave)
+      window.removeEventListener("blur", onLeave)
     }
   }, [])
 
@@ -100,10 +154,12 @@ export function ConstellationBackground() {
     <div
       aria-hidden
       className="pointer-events-none fixed inset-0 -z-10"
-      style={{ background: "radial-gradient(1200px circle at 10% 10%, rgba(16,185,129,0.08), transparent 60%)" }}
+      style={{
+        background:
+          "radial-gradient(1200px circle at var(--mouse-x,10%) var(--mouse-y,10%), rgba(16,185,129,0.08), transparent 60%)",
+      }}
     >
       <canvas ref={canvasRef} className="h-full w-full" />
     </div>
   )
 }
-
