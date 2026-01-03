@@ -14,6 +14,7 @@ export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const { theme, setTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
+  const [activeSection, setActiveSection] = useState<string>("home")
 
   useEffect(() => {
     setMounted(true)
@@ -27,6 +28,24 @@ export function Navbar() {
   const toggleTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark")
   }
+
+  useEffect(() => {
+    const ids = ["home", ...siteConfig.navigation.map((n) => n.href.replace("#", ""))]
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0]
+        if (visible?.target?.id) setActiveSection(visible.target.id)
+      },
+      { rootMargin: "0px 0px -60% 0px", threshold: [0.1, 0.25, 0.5] },
+    )
+    ids.forEach((id) => {
+      const el = document.getElementById(id)
+      if (el) observer.observe(el)
+    })
+    return () => observer.disconnect()
+  }, [])
 
   return (
     <header
@@ -44,17 +63,40 @@ export function Navbar() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-1">
-            {siteConfig.navigation.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="px-4 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors relative group"
-              >
-                {item.label}
-                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-1/2" />
-              </Link>
-            ))}
+          <div className="hidden lg:flex flex-1 items-center justify-center">
+            <div className="px-2 py-1.5 rounded-full border border-border bg-card/60 shadow-sm backdrop-blur supports-[backdrop-filter]:bg-card/70">
+              <div className="flex items-center gap-1">
+                <Link
+                  href="#home"
+                  className={cn(
+                    "relative px-4 py-2 rounded-full text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+                    activeSection === "home"
+                      ? "bg-background text-foreground shadow-sm ring-2 ring-ring/60"
+                      : "text-muted-foreground hover:text-foreground hover:bg-muted/40",
+                  )}
+                >
+                  Home
+                </Link>
+                {siteConfig.navigation.map((item) => {
+                  const id = item.href.replace("#", "")
+                  const isActive = activeSection === id
+                  return (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className={cn(
+                        "relative px-4 py-2 rounded-full text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+                        isActive
+                          ? "bg-background text-foreground shadow-sm ring-2 ring-ring/60"
+                          : "text-muted-foreground hover:text-foreground hover:bg-muted/40",
+                      )}
+                    >
+                      {item.label}
+                    </Link>
+                  )
+                })}
+              </div>
+            </div>
           </div>
 
           {/* Theme Toggle & Mobile Menu Button */}
@@ -90,13 +132,20 @@ export function Navbar() {
             isMobileMenuOpen ? "max-h-96 pb-4" : "max-h-0",
           )}
         >
-          <div className="flex flex-col gap-1 pt-2">
+          <div className="flex flex-col gap-1 pt-2 rounded-xl border border-border bg-card/60 p-2">
+            <Link
+              href="#home"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="px-4 py-3 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors"
+            >
+              Home
+            </Link>
             {siteConfig.navigation.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="px-4 py-3 text-muted-foreground hover:text-foreground hover:bg-muted/50 rounded-lg transition-colors"
+                className="px-4 py-3 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors"
               >
                 {item.label}
               </Link>
