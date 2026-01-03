@@ -1,18 +1,29 @@
-import type React from "react"
-import Link from "next/link"
-import { Github, Linkedin, Twitter, Mail } from "lucide-react"
-import { personalConfig } from "@/config/personal.config"
-import { siteConfig } from "@/config/site.config"
+import type React from "react";
+import Link from "next/link";
+import {
+  Github,
+  Linkedin,
+  Twitter,
+  Mail,
+  Facebook,
+  MessageCircle,
+} from "lucide-react";
+import { personalConfig } from "@/config/personal.config";
+import { siteConfig } from "@/config/site.config";
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Github,
   Linkedin,
   Twitter,
   Mail,
-}
+  Facebook,
+  MessageCircle,
+  facebook: Facebook,
+  whatsapp: MessageCircle,
+};
 
 export function Footer() {
-  const currentYear = new Date().getFullYear()
+  const currentYear = new Date().getFullYear();
 
   return (
     <footer className="border-t border-border bg-card/50">
@@ -23,7 +34,9 @@ export function Footer() {
             <Link href="#" className="text-lg font-bold text-foreground">
               {personalConfig.name}
             </Link>
-            <p className="text-sm text-muted-foreground">{personalConfig.title}</p>
+            <p className="text-sm text-muted-foreground">
+              {personalConfig.title}
+            </p>
           </div>
 
           {/* Quick Links */}
@@ -42,7 +55,7 @@ export function Footer() {
           {/* Social Links */}
           <div className="flex items-center gap-4">
             {personalConfig.social.map((social) => {
-              const Icon = iconMap[social.icon]
+              const Icon = iconMap[social.icon];
               return (
                 <Link
                   key={social.platform}
@@ -54,18 +67,18 @@ export function Footer() {
                 >
                   {Icon && <Icon className="h-5 w-5" />}
                 </Link>
-              )
+              );
             })}
           </div>
         </div>
 
         {/* Copyright */}
-        <div className="mt-8 pt-8 border-t border-border">
+        {/* <div className="mt-8 pt-8 border-t border-border">
           <p className="text-center text-sm text-muted-foreground">
             © {currentYear} {personalConfig.name}. Built with Next.js & Tailwind CSS.
           </p>
-        </div>
+        </div> */}
       </div>
     </footer>
-  )
+  );
 }

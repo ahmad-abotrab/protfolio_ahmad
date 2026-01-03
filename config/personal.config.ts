@@ -27,25 +27,33 @@ export const personalConfig: PersonalConfig = {
   },
 
   social: [
-    { platform: "github", url: "https://github.com/mohammed", icon: "Github" },
+    {
+      platform: "github",
+      url: "https://github.com/ahmad-abotrab",
+      icon: "Github",
+    },
     {
       platform: "linkedin",
-      url: "https://linkedin.com/in/mohammed",
+      url: "https://www.linkedin.com/in/ahmad-mazentrab/",
       icon: "Linkedin",
     },
     {
-      platform: "twitter",
-      url: "https://twitter.com/mohammed",
-      icon: "Twitter",
+      platform: "facebook",
+      url: "https://www.facebook.com/abotrabahmad/",
+      icon: "Facebook",
     },
-    { platform: "email", url: "mailto:mohammed@example.com", icon: "Mail" },
+    {
+      platform: "email",
+      url: "mailto:abotrab.ahmad3099@gmail.com",
+      icon: "Mail",
+    },
   ],
 
   contact: {
     title: "Get In Touch",
     description:
-      "I'm currently available for freelance work and full-time opportunities. If you have a project that needs development expertise, or if you're just looking to chat, feel free to reach out.",
-    email: "mohammed@example.com",
-    phone: "+90 xxx xxx xxxx",
+      "I'm currently available for any consulting projects, to help you with your data needs and guide your tech team to build rubost system",
+    email: "abotrab.ahmad3099@gmail.com",
+    phone: "+963 9423530393",
   },
 };

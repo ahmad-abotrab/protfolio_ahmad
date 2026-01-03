@@ -1,15 +1,21 @@
-"use client"
+"use client";
 
-import { motion, useInView } from "framer-motion"
-import { useRef } from "react"
-import { MapPin, Calendar, ExternalLink } from "lucide-react"
-import { Badge } from "@/components/ui/badge"
-import { experienceConfig } from "@/config/experience.config"
-import type { Position } from "@/types"
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+import { MapPin, Calendar, ExternalLink } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { experienceConfig } from "@/config/experience.config";
+import type { Position } from "@/types";
 
-function TimelineItem({ position, index }: { position: Position; index: number }) {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: "-50px" })
+function TimelineItem({
+  position,
+  index,
+}: {
+  position: Position;
+  index: number;
+}) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
 
   return (
     <motion.div
@@ -30,7 +36,9 @@ function TimelineItem({ position, index }: { position: Position; index: number }
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2 mb-4">
           <div>
-            <h3 className="text-lg font-semibold text-foreground">{position.title}</h3>
+            <h3 className="text-lg font-semibold text-foreground">
+              {position.title}
+            </h3>
             <div className="flex items-center gap-2 text-primary">
               <span className="font-medium">{position.company}</span>
               <ExternalLink className="h-3 w-3" />
@@ -38,7 +46,10 @@ function TimelineItem({ position, index }: { position: Position; index: number }
           </div>
 
           {position.isCurrent && (
-            <Badge variant="default" className="bg-primary/10 text-primary border-primary/30 w-fit">
+            <Badge
+              variant="default"
+              className="bg-primary/10 text-primary border-primary/30 w-fit"
+            >
               Current
             </Badge>
           )}
@@ -48,7 +59,8 @@ function TimelineItem({ position, index }: { position: Position; index: number }
         <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground mb-4">
           <span className="flex items-center gap-1">
             <Calendar className="h-4 w-4" />
-            {position.startDate} — {position.isCurrent ? "Present" : position.endDate}
+            {position.startDate} —{" "}
+            {position.isCurrent ? "Present" : position.endDate}
           </span>
           <span className="flex items-center gap-1">
             <MapPin className="h-4 w-4" />
@@ -76,16 +88,16 @@ function TimelineItem({ position, index }: { position: Position; index: number }
         </div>
       </div>
     </motion.div>
-  )
+  );
 }
 
 export function ExperienceSection() {
-  const { title, positions } = experienceConfig
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: "-100px" })
+  const { title, positions } = experienceConfig;
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="experience" className="py-20 lg:py-32 bg-card/30" ref={ref}>
+    <section id="experience" className="py-10 lg:py-32 bg-card/30" ref={ref}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -93,7 +105,9 @@ export function ExperienceSection() {
           transition={{ duration: 0.5 }}
           className="flex items-center gap-4 mb-12"
         >
-          <h2 className="text-2xl sm:text-3xl font-bold text-foreground">{title}</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-foreground">
+            {title}
+          </h2>
           <div className="h-px flex-1 bg-border" />
         </motion.div>
 
@@ -104,5 +118,5 @@ export function ExperienceSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
