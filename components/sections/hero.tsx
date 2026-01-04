@@ -16,6 +16,9 @@ export function HeroSection() {
   const intervalRef = useRef<number | null>(null);
   const timeoutRef = useRef<number | null>(null);
   const inView = useInView(heroRef, { once: false, margin: "-100px" });
+
+  const iRef = useRef(0);
+
   useEffect(() => {
     if (!inView) {
       if (intervalRef.current) clearInterval(intervalRef.current);
@@ -23,26 +26,26 @@ export function HeroSection() {
       return;
     }
 
+    const chars = Array.from(name);
+    iRef.current = 0; // reset counter
+
     setTypedName("");
     setIsTyping(true);
-    const chars = Array.from(name);
-    let i = 0;
-    const startDelay = 250;
 
-    // Clear previous timers before starting
     if (intervalRef.current) clearInterval(intervalRef.current);
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
 
+    const startDelay = 250;
     timeoutRef.current = window.setTimeout(() => {
       intervalRef.current = window.setInterval(() => {
-        if (i < chars.length) {
-          // <-- include last char
-          setTypedName(chars.slice(0, i + 1).join(""));
-          i++;
-        } else {
+        if (iRef.current >= chars.length) {
           if (intervalRef.current) clearInterval(intervalRef.current);
           setIsTyping(false);
+          return;
         }
+
+        setTypedName(chars.slice(0, iRef.current + 1).join(""));
+        iRef.current++;
       }, 120);
     }, startDelay);
 

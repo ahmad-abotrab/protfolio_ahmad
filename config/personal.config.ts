@@ -1,7 +1,7 @@
 import type { PersonalConfig } from "@/types";
 
 export const personalConfig: PersonalConfig = {
-  name: "Ahhmad Abotrab",
+  name: "Ahmad Abotrab",
   title: "",
   subtitle: "Software Engineer | Data Analyst",
   location: "Damascus,Syria",
