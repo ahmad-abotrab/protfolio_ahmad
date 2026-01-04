@@ -6,6 +6,7 @@ import { MapPin, Calendar, ExternalLink, Award, Trophy } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { educationConfig } from "@/config/education.config";
 import type { Degree, Achievement, Certification } from "@/types";
+import { toast } from "sonner";
 
 function DegreeCard({ degree, index }: { degree: Degree; index: number }) {
   const ref = useRef(null);
@@ -125,12 +126,22 @@ function CertificationItem({
   return (
     <motion.a
       ref={ref}
-      href={certification.url}
-      target="_blank"
-      rel="noopener noreferrer"
+      href={certification.url || "#"}
+      target={certification.url ? "_blank" : undefined}
+      rel={certification.url ? "noopener noreferrer" : undefined}
+      onClick={(e) => {
+        if (!certification.url) {
+          e.preventDefault();
+          toast.info("Coming soon", {
+            className:
+              "bg-primary text-primary-foreground border border-primary/30",
+            duration: 3000,
+          });
+        }
+      }}
       initial={{ opacity: 0, x: -20 }}
       animate={isInView ? { opacity: 1, x: 0 } : {}}
-      transition={{ duration: 0.4, delay: index * 0.1 }}
+      transition={{ duration: 0.2, delay: index * 0.06 }}
       className="flex items-center justify-between p-4 bg-card border border-border rounded-lg hover:border-primary/30 transition-colors group"
     >
       <div className="flex items-center gap-3">
