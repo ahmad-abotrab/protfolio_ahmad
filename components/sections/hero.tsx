@@ -16,22 +16,28 @@ export function HeroSection() {
   const intervalRef = useRef<number | null>(null);
   const timeoutRef = useRef<number | null>(null);
   const inView = useInView(heroRef, { once: false, margin: "-100px" });
-
   useEffect(() => {
     if (!inView) {
       if (intervalRef.current) clearInterval(intervalRef.current);
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
       return;
     }
+
     setTypedName("");
     setIsTyping(true);
     const chars = Array.from(name);
     let i = 0;
     const startDelay = 250;
+
+    // Clear previous timers before starting
+    if (intervalRef.current) clearInterval(intervalRef.current);
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+
     timeoutRef.current = window.setTimeout(() => {
       intervalRef.current = window.setInterval(() => {
-        if (i < chars.length - 1) {
-          setTypedName((prev) => prev + chars[i]);
+        if (i < chars.length) {
+          // <-- include last char
+          setTypedName(chars.slice(0, i + 1).join(""));
           i++;
         } else {
           if (intervalRef.current) clearInterval(intervalRef.current);
@@ -39,6 +45,7 @@ export function HeroSection() {
         }
       }, 120);
     }, startDelay);
+
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
