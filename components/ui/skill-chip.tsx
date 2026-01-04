@@ -1,0 +1,50 @@
+import { cn } from "@/lib/utils";
+
+type SkillChipProps = {
+  color?: string;
+  label: string;
+  icon: string;
+  className?: string;
+};
+
+export function SkillChip({ label, icon, className }: SkillChipProps) {
+  const slug = icon.toLowerCase();
+  ("");
+  const forceWhite = new Set([
+    "java",
+    "symfony",
+    "nextdotjs",
+    "pandas",
+    "github",
+    "apachekafka",
+  ]);
+
+  const src =
+    slug == "django" ||
+    slug == "nextdotjs" ||
+    slug == "symfony" ||
+    slug == "apachekafka"
+      ? forceWhite.has(slug)
+        ? `https://cdn.simpleicons.org/${slug}/ffffff?viewbox=auto`
+        : `https://cdn.simpleicons.org/${slug}`
+      : `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${slug}/${slug}-original.svg`;
+
+  return (
+    <div
+      className={cn(
+        "bg-muted/20 text-foreground border border-border inline-flex items-center gap-2 rounded-lg px-3 py-1.5 transition-colors hover:bg-muted/30",
+        className,
+      )}
+    >
+      {/* Using external CDN keeps bundle small and provides consistent brand icons */}
+      <img
+        src={src}
+        alt={`${label} icon`}
+        width={18}
+        height={18}
+        style={{ display: "inline-block" }}
+      />
+      <span className="text-sm">{label}</span>
+    </div>
+  );
+}

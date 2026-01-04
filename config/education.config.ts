@@ -4,18 +4,18 @@ export const educationConfig: EducationConfig = {
   title: "Education",
 
   degrees: [
-    {
-      id: "edu-1",
-      degree: "MSc in Data Science",
-      institution: "Paris Saclay University",
-      location: "Frence",
-      startYear: 2025,
-      endYear: 2027,
-      status: "In Progress",
-      description:
-        "Pursuing advanced studies in informatics with focus on software engineering and data science.",
-      logo: "/paris_saclay.png",
-    },
+    // {
+    //   id: "edu-1",
+    //   degree: "MSc in Data Science",
+    //   institution: "Paris Saclay University",
+    //   location: "Frence",
+    //   startYear: 2025,
+    //   endYear: 2027,
+    //   status: "In Progress",
+    //   description:
+    //     "Pursuing advanced studies in informatics with focus on software engineering and data science.",
+    //   logo: "/paris_saclay.png",
+    // },
     {
       id: "edu-2",
       degree: "BSc in Software Engineering",
@@ -24,7 +24,7 @@ export const educationConfig: EducationConfig = {
       startYear: 2015,
       endYear: 2019,
       status: "Completed",
-      logo: "/images/education/damascus.png",
+      logo: "/dama_logo.jpg",
     },
   ],
 

@@ -118,15 +118,18 @@ export interface Skill {
   name: string;
   icon: string;
   level: number;
+  color?: string;
 }
 
 export interface SkillCategory {
   name: string;
+
   skills: Skill[];
 }
 
 export interface SkillsConfig {
   title: string;
+
   categories: SkillCategory[];
 }
 

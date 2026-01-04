@@ -7,6 +7,7 @@ import { MapPin, Calendar, ExternalLink } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { experienceConfig } from "@/config/experience.config";
 import type { Position } from "@/types";
+import { SkillChip } from "../ui/skill-chip";
 
 function TimelineItem({
   position,
@@ -17,6 +18,19 @@ function TimelineItem({
 }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
+
+  const exceptionsSkills = new Set([
+    "Teaching",
+    "Presentation",
+    "Lego Ev3",
+    "HTML",
+    "CSS",
+    "Agile Methodologies",
+    "Data Management",
+    "Data Analysis",
+    "SQL Server",
+    "Data Security",
+  ]);
 
   return (
     <motion.div
@@ -93,11 +107,15 @@ function TimelineItem({
 
         {/* Technologies */}
         <div className="flex flex-wrap gap-2">
-          {position.technologies.map((tech) => (
-            <Badge key={tech} variant="secondary" className="text-xs">
-              {tech}
-            </Badge>
-          ))}
+          {position.technologies.map((tech) =>
+            exceptionsSkills.has(tech) ? (
+              <Badge key={tech} variant="secondary" className="text-xs">
+                {tech}
+              </Badge>
+            ) : (
+              <SkillChip key={tech} label={tech} icon={tech} />
+            ),
+          )}
         </div>
       </div>
     </motion.div>

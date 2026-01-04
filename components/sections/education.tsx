@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { educationConfig } from "@/config/education.config";
 import type { Degree, Achievement, Certification } from "@/types";
 import { toast } from "sonner";
+import Image from "next/image";
 
 function DegreeCard({ degree, index }: { degree: Degree; index: number }) {
   const ref = useRef(null);
@@ -21,10 +22,14 @@ function DegreeCard({ degree, index }: { degree: Degree; index: number }) {
     >
       <div className="bg-card border border-border rounded-xl p-6 hover:border-primary/30 transition-colors h-full">
         <div className="flex items-start gap-4">
-          <div className="w-12 h-12 rounded-lg bg-primary/10 border border-primary/30 flex items-center justify-center shrink-0">
-            <span className="text-lg font-bold text-primary">
-              {degree.institution.charAt(0)}
-            </span>
+          <div className="relative overflow-hidden w-18 h-18 rounded-lg bg-primary/10 border border-primary/30 shrink-0">
+            <Image
+              src={degree.logo}
+              alt={`${degree.institution} logo`}
+              fill
+              sizes="100%"
+              className="object-cover"
+            />
           </div>
 
           <div className="flex-1 min-w-0">
@@ -97,7 +102,7 @@ function AchievementCard({
         >
           <div className="bg-card border border-border rounded-xl p-5 hover:border-primary/30 transition-colors h-full">
             <div className="flex items-start gap-3">
-              <div className="w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center shrink-0">
+              <div className="w-12 h-12 rounded-lg bg-amber-500/10 flex items-center justify-center shrink-0">
                 <Trophy className="h-5 w-5 text-amber-500" />
               </div>
 
