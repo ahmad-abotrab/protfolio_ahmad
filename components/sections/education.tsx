@@ -88,27 +88,67 @@ function AchievementCard({
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: index * 0.1 }}
     >
-      <div className="bg-card border border-border rounded-xl p-5 hover:border-primary/30 transition-colors h-full">
-        <div className="flex items-start gap-3">
-          <div className="w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center shrink-0">
-            <Trophy className="h-5 w-5 text-amber-500" />
-          </div>
+      {achievement.image ? (
+        <a
+          href={achievement.image}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block"
+        >
+          <div className="bg-card border border-border rounded-xl p-5 hover:border-primary/30 transition-colors h-full">
+            <div className="flex items-start gap-3">
+              <div className="w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center shrink-0">
+                <Trophy className="h-5 w-5 text-amber-500" />
+              </div>
 
-          <div className="flex-1 min-w-0">
-            <h4 className="font-semibold text-foreground text-sm mb-1">
-              {achievement.title}
-            </h4>
-            <Badge variant="outline" className="text-xs mb-2">
-              {achievement.position}
-            </Badge>
-            <div className="flex items-center gap-2 text-xs text-muted-foreground">
-              <span>{achievement.location}</span>
-              <span>•</span>
-              <span>{achievement.year}</span>
+              <div className="flex-1 min-w-0">
+                <h4 className="font-semibold text-foreground text-sm mb-1">
+                  {achievement.title}
+                </h4>
+                <Badge variant="outline" className="text-xs mb-2">
+                  {achievement.position}
+                </Badge>
+                <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                  <span>{achievement.location}</span>
+                  <span>•</span>
+                  <span>{achievement.year}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+      ) : (
+        <div
+          className="bg-card border border-border rounded-xl p-5 hover:border-primary/30 transition-colors h-full cursor-pointer"
+          onClick={() =>
+            toast.info("Coming soon", {
+              className:
+                "bg-primary text-primary-foreground border border-primary/30",
+              duration: 3000,
+            })
+          }
+        >
+          <div className="flex items-start gap-3">
+            <div className="w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center shrink-0">
+              <Trophy className="h-5 w-5 text-amber-500" />
+            </div>
+
+            <div className="flex-1 min-w-0">
+              <h4 className="font-semibold text-foreground text-sm mb-1">
+                {achievement.title}
+              </h4>
+              <Badge variant="outline" className="text-xs mb-2">
+                {achievement.position}
+              </Badge>
+              <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                <span>{achievement.location}</span>
+                <span>•</span>
+                <span>{achievement.year}</span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
     </motion.div>
   );
 }
