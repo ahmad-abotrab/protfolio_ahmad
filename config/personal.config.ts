@@ -23,7 +23,7 @@ export const personalConfig: PersonalConfig = {
       "I am strongly interested in collaborating on projects at the intersection of software development and data science—whether it’s designing analytical tools, refining algorithms for smarter applications, or delivering insights that inform critical decisions.",
     ],
     image: "/images/profile/avatar.jpg",
-    resumeUrl: "/resume.pdf",
+    resumeUrl: "/Ahmad-Abotrab-CV - v3.pdf",
   },
 
   social: [

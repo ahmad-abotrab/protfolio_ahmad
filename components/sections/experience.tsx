@@ -2,6 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import Link from "next/link";
 import { MapPin, Calendar, ExternalLink } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { experienceConfig } from "@/config/experience.config";
@@ -39,10 +40,22 @@ function TimelineItem({
             <h3 className="text-lg font-semibold text-foreground">
               {position.title}
             </h3>
-            <div className="flex items-center gap-2 text-primary">
-              <span className="font-medium">{position.company}</span>
-              <ExternalLink className="h-3 w-3" />
-            </div>
+            {position.companyUrl ? (
+              <Link
+                href={position.companyUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-primary hover:underline"
+                aria-label={`${position.company} website`}
+              >
+                <span className="font-medium">{position.company}</span>
+                <ExternalLink className="h-3 w-3" />
+              </Link>
+            ) : (
+              <div className="flex items-center gap-2 text-primary">
+                <span className="font-medium">{position.company}</span>
+              </div>
+            )}
           </div>
 
           {position.isCurrent && (

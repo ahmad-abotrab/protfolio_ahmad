@@ -16,7 +16,10 @@ import {
 import { servicesConfig } from "@/config/services.config";
 import type { Service } from "@/types";
 
-const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+const iconMap: Record<
+  string,
+  React.ComponentType<{ className?: string; style?: React.CSSProperties }>
+> = {
   Code,
   Server,
   Database,

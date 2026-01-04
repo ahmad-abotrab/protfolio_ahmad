@@ -25,7 +25,7 @@ export const servicesConfig: ServicesConfig = {
       id: "Data Engineer",
       title: "Data Engineer",
       description:
-        "Scalable data architectures with PostgreSQL, MongoDB, and Redis for high-performance data processing",
+        "Building scalable data systems that deliver clean, reliable data for analytics and decision-making",
       icon: "Database",
       color: "#8B5CF6",
     },

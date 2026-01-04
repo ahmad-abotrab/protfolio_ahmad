@@ -1,4 +1,4 @@
-import type { EducationConfig } from "@/types"
+import type { EducationConfig } from "@/types";
 
 export const educationConfig: EducationConfig = {
   title: "Education",
@@ -12,7 +12,8 @@ export const educationConfig: EducationConfig = {
       startYear: 2025,
       endYear: 2027,
       status: "In Progress",
-      description: "Pursuing advanced studies in informatics with focus on software engineering and data science.",
+      description:
+        "Pursuing advanced studies in informatics with focus on software engineering and data science.",
       logo: "/images/education/ktu.png",
     },
     {
@@ -29,33 +30,55 @@ export const educationConfig: EducationConfig = {
 
   certifications: [
     {
-      name: "AWS Cloud Practitioner",
-      issuer: "Amazon Web Services",
-      date: "2024",
-      url: "https://aws.amazon.com/certification",
+      name: "Data Engineering for beginner",
+      issuer: "kiwi-lytics Data solution company (on Udemy)",
+      date: "comming soon",
+      url: "",
     },
     {
-      name: "Docker Certified Associate",
-      issuer: "Docker",
-      date: "2023",
-      url: "https://docker.com/certification",
+      name: "Mastering Laravel Elqount (ORM)",
+      issuer: "Udemy",
+      date: "comming soon",
+      url: "",
+    },
+    {
+      name: "Micronaut cloud native microserivce",
+      issuer: "Udemy",
+      date: "comming soon",
+      url: "",
     },
   ],
 
   achievements: [
     {
-      title: "World Robot Olympiad",
+      id: "ach-1",
+      title: "World Robot Olympiad (Open category)",
       position: "6th Place",
       location: "India",
-      year: 2017,
-      description: "International robotics competition featuring teams from 60+ countries.",
+      year: 2016,
+      image: "/india_wro.jpeg",
+      description:
+        "International robotics competition featuring teams from 60+ countries.",
     },
     {
-      title: "Future Inventor in Business",
-      position: "3rd Place",
+      id: "ach-2",
+      title: "World Robot Olympiad (Open category)",
+      position: "13rd Place",
       location: "Thailand",
       year: 2018,
-      description: "Business innovation competition showcasing entrepreneurial skills.",
+      image: "/thailand_wro.jpeg",
+      description:
+        "International robotics competition featuring teams from 70+ countries.",
     },
+    // {
+    //   id: "ach-3",
+    //   title: "Future Inventor in Business",
+    //   position: "3rd Place",
+    //   location: "Thailand",
+    //   year: 2018,
+    //   image: "",
+    //   description:
+    //     "Business innovation competition showcasing entrepreneurial skills.",
+    // },
   ],
-}
+};

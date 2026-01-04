@@ -1,15 +1,15 @@
-"use client"
+"use client";
 
-import { motion, useInView } from "framer-motion"
-import { useRef } from "react"
-import { MapPin, Calendar, ExternalLink, Award, Trophy } from "lucide-react"
-import { Badge } from "@/components/ui/badge"
-import { educationConfig } from "@/config/education.config"
-import type { Degree, Achievement, Certification } from "@/types"
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+import { MapPin, Calendar, ExternalLink, Award, Trophy } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { educationConfig } from "@/config/education.config";
+import type { Degree, Achievement, Certification } from "@/types";
 
 function DegreeCard({ degree, index }: { degree: Degree; index: number }) {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: "-50px" })
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
 
   return (
     <motion.div
@@ -21,23 +21,31 @@ function DegreeCard({ degree, index }: { degree: Degree; index: number }) {
       <div className="bg-card border border-border rounded-xl p-6 hover:border-primary/30 transition-colors h-full">
         <div className="flex items-start gap-4">
           <div className="w-12 h-12 rounded-lg bg-primary/10 border border-primary/30 flex items-center justify-center shrink-0">
-            <span className="text-lg font-bold text-primary">{degree.institution.charAt(0)}</span>
+            <span className="text-lg font-bold text-primary">
+              {degree.institution.charAt(0)}
+            </span>
           </div>
 
           <div className="flex-1 min-w-0">
             <div className="flex items-start justify-between gap-2 mb-1">
               <h3 className="font-semibold text-foreground">{degree.degree}</h3>
               <Badge
-                variant={degree.status === "In Progress" ? "default" : "secondary"}
+                variant={
+                  degree.status === "In Progress" ? "default" : "secondary"
+                }
                 className={
-                  degree.status === "In Progress" ? "bg-primary/10 text-primary border-primary/30 shrink-0" : "shrink-0"
+                  degree.status === "In Progress"
+                    ? "bg-primary/10 text-primary border-primary/30 shrink-0"
+                    : "shrink-0"
                 }
               >
                 {degree.status}
               </Badge>
             </div>
 
-            <p className="text-primary text-sm font-medium mb-2">{degree.institution}</p>
+            <p className="text-primary text-sm font-medium mb-2">
+              {degree.institution}
+            </p>
 
             <div className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
               <span className="flex items-center gap-1">
@@ -50,17 +58,27 @@ function DegreeCard({ degree, index }: { degree: Degree; index: number }) {
               </span>
             </div>
 
-            {degree.description && <p className="text-muted-foreground text-sm mt-3">{degree.description}</p>}
+            {degree.description && (
+              <p className="text-muted-foreground text-sm mt-3">
+                {degree.description}
+              </p>
+            )}
           </div>
         </div>
       </div>
     </motion.div>
-  )
+  );
 }
 
-function AchievementCard({ achievement, index }: { achievement: Achievement; index: number }) {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: "-50px" })
+function AchievementCard({
+  achievement,
+  index,
+}: {
+  achievement: Achievement;
+  index: number;
+}) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
 
   return (
     <motion.div
@@ -76,7 +94,9 @@ function AchievementCard({ achievement, index }: { achievement: Achievement; ind
           </div>
 
           <div className="flex-1 min-w-0">
-            <h4 className="font-semibold text-foreground text-sm mb-1">{achievement.title}</h4>
+            <h4 className="font-semibold text-foreground text-sm mb-1">
+              {achievement.title}
+            </h4>
             <Badge variant="outline" className="text-xs mb-2">
               {achievement.position}
             </Badge>
@@ -89,12 +109,18 @@ function AchievementCard({ achievement, index }: { achievement: Achievement; ind
         </div>
       </div>
     </motion.div>
-  )
+  );
 }
 
-function CertificationItem({ certification, index }: { certification: Certification; index: number }) {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: "-30px" })
+function CertificationItem({
+  certification,
+  index,
+}: {
+  certification: Certification;
+  index: number;
+}) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-30px" });
 
   return (
     <motion.a
@@ -120,13 +146,13 @@ function CertificationItem({ certification, index }: { certification: Certificat
       </div>
       <ExternalLink className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
     </motion.a>
-  )
+  );
 }
 
 export function EducationSection() {
-  const { title, degrees, certifications, achievements } = educationConfig
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: "-100px" })
+  const { title, degrees, certifications, achievements } = educationConfig;
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
     <section id="education" className="py-20 lg:py-32" ref={ref}>
@@ -137,14 +163,18 @@ export function EducationSection() {
           transition={{ duration: 0.5 }}
           className="flex items-center gap-4 mb-12"
         >
-          <h2 className="text-2xl sm:text-3xl font-bold text-foreground">{title}</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-foreground">
+            {title}
+          </h2>
           <div className="h-px flex-1 bg-border" />
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-8 mb-12">
           {/* Degrees */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-foreground mb-4">Academic Background</h3>
+            <h3 className="text-lg font-semibold text-foreground mb-4">
+              Academic Background
+            </h3>
             {degrees.map((degree, index) => (
               <DegreeCard key={degree.id} degree={degree} index={index} />
             ))}
@@ -152,9 +182,15 @@ export function EducationSection() {
 
           {/* Achievements */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-foreground mb-4">Achievements</h3>
+            <h3 className="text-lg font-semibold text-foreground mb-4">
+              Achievements
+            </h3>
             {achievements.map((achievement, index) => (
-              <AchievementCard key={achievement.title} achievement={achievement} index={index} />
+              <AchievementCard
+                key={achievement.id}
+                achievement={achievement}
+                index={index}
+              />
             ))}
           </div>
         </div>
@@ -162,15 +198,21 @@ export function EducationSection() {
         {/* Certifications */}
         {certifications.length > 0 && (
           <div>
-            <h3 className="text-lg font-semibold text-foreground mb-4">Certifications</h3>
+            <h3 className="text-lg font-semibold text-foreground mb-4">
+              Certifications
+            </h3>
             <div className="grid sm:grid-cols-2 gap-3">
               {certifications.map((certification, index) => (
-                <CertificationItem key={certification.name} certification={certification} index={index} />
+                <CertificationItem
+                  key={certification.name}
+                  certification={certification}
+                  index={index}
+                />
               ))}
             </div>
           </div>
         )}
       </div>
     </section>
-  )
+  );
 }

@@ -1,11 +1,11 @@
-import type { SiteConfig } from "@/types"
+import type { SiteConfig } from "@/types";
 
 export const siteConfig: SiteConfig = {
   name: "Ahmad Abotrab",
   title: "",
   description:
     "A reliable developer with 4+ years of experience building scalable web applications and data-driven solutions.",
-  url: "https://mohammed.dev",
+  url: "https://ahmadabotrab.com",
   ogImage: "/images/og-image.png",
 
   navigation: [
@@ -25,4 +25,4 @@ export const siteConfig: SiteConfig = {
       accent: "#F59E0B",
     },
   },
-}
+};
