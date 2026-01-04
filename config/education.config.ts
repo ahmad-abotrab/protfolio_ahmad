@@ -6,15 +6,15 @@ export const educationConfig: EducationConfig = {
   degrees: [
     {
       id: "edu-1",
-      degree: "MSc in Informatics",
-      institution: "Kaunas University of Technology",
-      location: "Lithuania",
+      degree: "MSc in Data Science",
+      institution: "Paris Saclay University",
+      location: "Frence",
       startYear: 2025,
       endYear: 2027,
       status: "In Progress",
       description:
         "Pursuing advanced studies in informatics with focus on software engineering and data science.",
-      logo: "/images/education/ktu.png",
+      logo: "/paris_saclay.png",
     },
     {
       id: "edu-2",

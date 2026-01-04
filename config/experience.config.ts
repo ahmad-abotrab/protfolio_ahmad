@@ -42,10 +42,9 @@ export const experienceConfig: ExperienceConfig = {
       logo: "/akkad_dental.jpg",
       companyUrl: "https://www.facebook.com/AkkadDentalCenter",
       description: [
-        "Contributed to the development of multiple web and mobile applications by assisting in backend and frontend implementation.",
-        "Supported the digitization of business processes and improvement of operational workflows through web-based systems.",
-        "Participated in building RESTful APIs, user interfaces, and database-driven features to enhance system efficiency and usability.",
-        "Collaborated with the team to deliver scalable and user-friendly solutions across different domains",
+        "Provided technical consultation for evaluating the clinic’s existing software and team workflows, ensuring alignment with operational needs",
+        "Analyzed 10 years of patient data and treatment records to identify actionable insights and optimize decision-making processes",
+        "Designed a plan for migrating to a new system that meets evolving clinic requirements while preserving historical data integrity",
       ],
       technologies: [
         "Agile Methodologies",

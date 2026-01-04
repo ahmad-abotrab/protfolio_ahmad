@@ -1,17 +1,56 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { ArrowDown, FileText } from "lucide-react"
-import Image from "next/image"
-import { Button } from "@/components/ui/button"
-import { SocialLinks } from "@/components/ui/social-links"
-import { personalConfig } from "@/config/personal.config"
+import { motion, useInView } from "framer-motion";
+import { ArrowDown, FileText } from "lucide-react";
+import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
+import { Button } from "@/components/ui/button";
+import { SocialLinks } from "@/components/ui/social-links";
+import { personalConfig } from "@/config/personal.config";
 
 export function HeroSection() {
-  const { hero, name, title, subtitle, social, about } = personalConfig
+  const { hero, name, title, subtitle, social, about } = personalConfig;
+  const [typedName, setTypedName] = useState("");
+  const [isTyping, setIsTyping] = useState(true);
+  const heroRef = useRef<HTMLElement | null>(null);
+  const intervalRef = useRef<number | null>(null);
+  const timeoutRef = useRef<number | null>(null);
+  const inView = useInView(heroRef, { once: false, margin: "-100px" });
+
+  useEffect(() => {
+    if (!inView) {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+      return;
+    }
+    setTypedName("");
+    setIsTyping(true);
+    const chars = Array.from(name);
+    let i = 0;
+    const startDelay = 250;
+    timeoutRef.current = window.setTimeout(() => {
+      intervalRef.current = window.setInterval(() => {
+        if (i < chars.length - 1) {
+          setTypedName((prev) => prev + chars[i]);
+          i++;
+        } else {
+          if (intervalRef.current) clearInterval(intervalRef.current);
+          setIsTyping(false);
+        }
+      }, 120);
+    }, startDelay);
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
+  }, [name, inView]);
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16">
+    <section
+      id="home"
+      ref={heroRef}
+      className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16"
+    >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Column - Text Content */}
@@ -36,7 +75,10 @@ export function HeroSection() {
               transition={{ delay: 0.2 }}
               className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-4"
             >
-              {name}
+              {typedName}
+              {isTyping && (
+                <span className="inline-block align-middle ml-1 h-[1em] w-[1px] bg-primary animate-pulse" />
+              )}
             </motion.h1>
 
             <motion.h2
@@ -76,12 +118,28 @@ export function HeroSection() {
               <Button asChild size="lg" className="w-full sm:w-auto">
                 <a href={hero.ctaButton.href}>{hero.ctaButton.label}</a>
               </Button>
-              <Button asChild variant="outline" size="lg" className="w-full sm:w-auto bg-transparent">
-                <a href={hero.secondaryButton.href}>{hero.secondaryButton.label}</a>
+              <Button
+                asChild
+                variant="outline"
+                size="lg"
+                className="w-full sm:w-auto bg-transparent"
+              >
+                <a href={hero.secondaryButton.href}>
+                  {hero.secondaryButton.label}
+                </a>
               </Button>
               {about.resumeUrl && (
-                <Button asChild variant="ghost" size="lg" className="w-full sm:w-auto gap-2">
-                  <a href={about.resumeUrl} target="_blank" rel="noopener noreferrer">
+                <Button
+                  asChild
+                  variant="ghost"
+                  size="lg"
+                  className="w-full sm:w-auto gap-2"
+                >
+                  <a
+                    href={about.resumeUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <FileText className="h-4 w-4" />
                     Resume
                   </a>
@@ -138,12 +196,15 @@ export function HeroSection() {
             className="flex flex-col items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
           >
             <span className="text-sm">Scroll down</span>
-            <motion.div animate={{ y: [0, 8, 0] }} transition={{ repeat: Number.POSITIVE_INFINITY, duration: 1.5 }}>
+            <motion.div
+              animate={{ y: [0, 8, 0] }}
+              transition={{ repeat: Number.POSITIVE_INFINITY, duration: 1.5 }}
+            >
               <ArrowDown className="h-5 w-5" />
             </motion.div>
           </a>
         </motion.div>
       </div>
     </section>
-  )
+  );
 }

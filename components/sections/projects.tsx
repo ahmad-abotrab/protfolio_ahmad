@@ -1,18 +1,18 @@
-"use client"
+"use client";
 
-import { motion, useInView } from "framer-motion"
-import { useRef } from "react"
-import Image from "next/image"
-import Link from "next/link"
-import { ExternalLink, Github, Apple, Play } from "lucide-react"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { projectsConfig } from "@/config/projects.config"
-import type { Project } from "@/types"
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { ExternalLink, Github, Apple, Play } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { projectsConfig } from "@/config/projects.config";
+import type { Project } from "@/types";
 
 function ProjectCard({ project, index }: { project: Project; index: number }) {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: "-50px" })
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
 
   return (
     <motion.div
@@ -35,7 +35,9 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 
           {/* Featured Badge */}
           {project.featured && (
-            <Badge className="absolute top-4 right-4 bg-primary/90 text-primary-foreground">Featured</Badge>
+            <Badge className="absolute top-4 right-4 bg-primary/90 text-primary-foreground">
+              Featured
+            </Badge>
           )}
         </div>
 
@@ -50,7 +52,9 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
             </Badge>
           </div>
 
-          <p className="text-muted-foreground text-sm mb-4 line-clamp-2">{project.description}</p>
+          <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
+            {project.description}
+          </p>
 
           {/* Technologies */}
           <div className="flex flex-wrap gap-2 mb-4">
@@ -69,16 +73,34 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           {/* Links */}
           <div className="flex flex-wrap items-center gap-2">
             {project.links.website && (
-              <Button asChild variant="outline" size="sm" className="gap-1.5 bg-transparent">
-                <Link href={project.links.website} target="_blank" rel="noopener noreferrer">
+              <Button
+                asChild
+                variant="outline"
+                size="sm"
+                className="gap-1.5 bg-transparent"
+              >
+                <Link
+                  href={project.links.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <ExternalLink className="h-3.5 w-3.5" />
                   Visit
                 </Link>
               </Button>
             )}
             {project.links.github && (
-              <Button asChild variant="outline" size="sm" className="gap-1.5 bg-transparent">
-                <Link href={project.links.github} target="_blank" rel="noopener noreferrer">
+              <Button
+                asChild
+                variant="outline"
+                size="sm"
+                className="gap-1.5 bg-transparent"
+              >
+                <Link
+                  href={project.links.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <Github className="h-3.5 w-3.5" />
                   Code
                 </Link>
@@ -86,14 +108,22 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
             )}
             {project.links.appStore && (
               <Button asChild variant="ghost" size="sm" className="gap-1.5">
-                <Link href={project.links.appStore} target="_blank" rel="noopener noreferrer">
+                <Link
+                  href={project.links.appStore}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <Apple className="h-3.5 w-3.5" />
                 </Link>
               </Button>
             )}
             {project.links.playStore && (
               <Button asChild variant="ghost" size="sm" className="gap-1.5">
-                <Link href={project.links.playStore} target="_blank" rel="noopener noreferrer">
+                <Link
+                  href={project.links.playStore}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <Play className="h-3.5 w-3.5" />
                 </Link>
               </Button>
@@ -102,15 +132,15 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
         </div>
       </div>
     </motion.div>
-  )
+  );
 }
 
 export function ProjectsSection() {
-  const { title, subtitle, projects } = projectsConfig
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: "-100px" })
+  const { title, subtitle, projects } = projectsConfig;
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-  const featuredProjects = projects.filter((p) => p.featured)
+  const featuredProjects = projects.filter((p) => p.featured);
 
   return (
     <section id="projects" className="py-20 lg:py-32" ref={ref}>
@@ -121,16 +151,33 @@ export function ProjectsSection() {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-4">{title}</h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">{subtitle}</p>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-4">
+            {title}
+          </h2>
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            {subtitle}
+          </p>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <motion.div
+          initial={{ opacity: 0.7 }}
+          animate={isInView ? { opacity: [0.7, 1, 0.7] } : {}}
+          transition={{ duration: 1.8, repeat: Number.POSITIVE_INFINITY }}
+          className="text-center mt-6"
+        >
+          <span
+            className="text-primary font-bold tracking-wide text-5xl"
+            style={{ textShadow: "80px 0 80px hsl(var(--primary))" }}
+          >
+            Coming soon
+          </span>
+        </motion.div>
+        {/* <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {featuredProjects.map((project, index) => (
             <ProjectCard key={project.id} project={project} index={index} />
           ))}
-        </div>
+        </div> */}
       </div>
     </section>
-  )
+  );
 }
