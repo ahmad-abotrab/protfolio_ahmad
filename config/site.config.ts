@@ -6,7 +6,7 @@ export const siteConfig: SiteConfig = {
   description:
     "A reliable developer with 4+ years of experience building scalable web applications and data-driven solutions.",
   url: "https://ahmadabotrab.com",
-  ogImage: "/images/og-image.png",
+  ogImage: "/ahmad.png",
 
   navigation: [
     { label: "About", href: "#about" },

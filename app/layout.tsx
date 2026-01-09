@@ -24,11 +24,13 @@ export const metadata: Metadata = {
     url: siteConfig.url,
     siteName: siteConfig.name,
     type: "website",
+    images: [`${siteConfig.url}${siteConfig.ogImage}`],
   },
   twitter: {
     card: "summary_large_image",
     title: `${siteConfig.name} | ${siteConfig.title}`,
     description: siteConfig.description,
+    images: [`${siteConfig.url}${siteConfig.ogImage}`],
   },
   icons: {
     icon: [
@@ -46,6 +48,10 @@ export const metadata: Metadata = {
       },
     ],
     apple: "/apple-icon.png",
+  },
+  metadataBase: new URL(siteConfig.url),
+  alternates: {
+    canonical: siteConfig.url,
   },
 };
 
