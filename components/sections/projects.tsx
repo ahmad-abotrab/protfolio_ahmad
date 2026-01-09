@@ -9,6 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { projectsConfig } from "@/config/projects.config";
 import type { Project } from "@/types";
+import { SkillChip } from "@/components/ui/skill-chip";
 
 function ProjectCard({ project, index }: { project: Project; index: number }) {
   const ref = useRef(null);
@@ -57,15 +58,18 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           </p>
 
           {/* Technologies */}
-          <div className="flex flex-wrap gap-2 mb-4">
-            {project.technologies.slice(0, 4).map((tech) => (
-              <Badge key={tech.name} variant="secondary" className="text-xs">
-                {tech.name}
-              </Badge>
+          <div className="flex flex-wrap items-center gap-2 mb-4">
+            {project.technologies.slice(0, 6).map((tech) => (
+              <SkillChip
+                key={tech.name}
+                label={tech.name}
+                icon={tech.icon}
+                className="px-2 py-1.5"
+              />
             ))}
-            {project.technologies.length > 4 && (
+            {project.technologies.length > 6 && (
               <Badge variant="secondary" className="text-xs">
-                +{project.technologies.length - 4}
+                +{project.technologies.length - 6}
               </Badge>
             )}
           </div>
@@ -164,19 +168,12 @@ export function ProjectsSection() {
           animate={isInView ? { opacity: [0.7, 1, 0.7] } : {}}
           transition={{ duration: 1.8, repeat: Number.POSITIVE_INFINITY }}
           className="text-center mt-6"
-        >
-          <span
-            className="text-primary font-bold tracking-wide text-5xl"
-            style={{ textShadow: "80px 0 80px hsl(var(--primary))" }}
-          >
-            Coming soon
-          </span>
-        </motion.div>
-        {/* <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        ></motion.div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {featuredProjects.map((project, index) => (
             <ProjectCard key={project.id} project={project} index={index} />
           ))}
-        </div> */}
+        </div>
       </div>
     </section>
   );

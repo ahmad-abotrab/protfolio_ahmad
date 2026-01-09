@@ -9,7 +9,10 @@ type SkillChipProps = {
 
 export function SkillChip({ label, icon, className }: SkillChipProps) {
   const slug = icon.toLowerCase();
-  ("");
+  const deviconSlugMap: Record<string, string> = {
+    tailwind: "tailwindcss",
+  };
+  const normalizedSlug = deviconSlugMap[slug] ?? slug;
   const forceWhite = new Set([
     "java",
     "symfony",
@@ -20,14 +23,14 @@ export function SkillChip({ label, icon, className }: SkillChipProps) {
   ]);
 
   const src =
-    slug == "django" ||
-    slug == "nextdotjs" ||
-    slug == "symfony" ||
-    slug == "apachekafka"
-      ? forceWhite.has(slug)
-        ? `https://cdn.simpleicons.org/${slug}/ffffff?viewbox=auto`
-        : `https://cdn.simpleicons.org/${slug}`
-      : `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${slug}/${slug}-original.svg`;
+    normalizedSlug == "django" ||
+    normalizedSlug == "nextdotjs" ||
+    normalizedSlug == "symfony" ||
+    normalizedSlug == "apachekafka"
+      ? forceWhite.has(normalizedSlug)
+        ? `https://cdn.simpleicons.org/${normalizedSlug}/ffffff?viewbox=auto`
+        : `https://cdn.simpleicons.org/${normalizedSlug}`
+      : `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${normalizedSlug}/${normalizedSlug}-original.svg`;
 
   return (
     <div
