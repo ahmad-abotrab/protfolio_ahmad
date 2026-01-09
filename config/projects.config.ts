@@ -28,6 +28,13 @@ export const projectsConfig: ProjectsConfig = {
       },
       featured: true,
       category: "Mobile App",
+      references: [
+        {
+          id: "reference-1",
+          name: "Amer Al-Hosari",
+          link: "https://www.linkedin.com/in/amer-al-hosari/",
+        },
+      ],
     },
     {
       id: "project-2",
@@ -53,6 +60,13 @@ export const projectsConfig: ProjectsConfig = {
       },
       featured: true,
       category: "Web app",
+      references: [
+        {
+          id: "reference-2",
+          name: "Khaled Etmeh",
+          link: "https://www.linkedin.com/in/khaled-etmeh/",
+        },
+      ],
     },
     {
       id: "project-3",
@@ -74,6 +88,13 @@ export const projectsConfig: ProjectsConfig = {
       },
       featured: true,
       category: "Mobile App",
+      references: [
+        {
+          id: "reference-3",
+          name: "Mohammad Al-zain",
+          link: "https://www.linkedin.com/in/mohammad-alzain/",
+        },
+      ],
     },
     {
       id: "project-4",
@@ -97,6 +118,13 @@ export const projectsConfig: ProjectsConfig = {
       },
       featured: true,
       category: "Mobile App",
+      references: [
+        {
+          id: "reference-6",
+          name: "Marah Daher",
+          link: "https://www.linkedin.com/in/marah-daher193/",
+        },
+      ],
     },
     {
       id: "project-5",
@@ -119,6 +147,13 @@ export const projectsConfig: ProjectsConfig = {
       },
       featured: true,
       category: "Mobile app",
+      references: [
+        {
+          id: "reference-5",
+          name: "Amer Al-Hosari",
+          link: "https://www.linkedin.com/in/amer-al-hosari/",
+        },
+      ],
     },
     {
       id: "project-6",
@@ -127,7 +162,7 @@ export const projectsConfig: ProjectsConfig = {
         "Platform for food ordering and managing menus, promotions, and payment integration.",
       longDescription:
         "Delivered the UBC Food platform to manage menus, orders, and promotions, with an easy admin dashboard and QA testing. Improved UX by reducing ordering steps and adding real-time order status tracking.",
-      image: "/placeholder.svg",
+      image: "/Al-Baraka.jpeg",
       screenshots: [],
       technologies: [
         { name: "Flutter", icon: "flutter" },
@@ -135,10 +170,19 @@ export const projectsConfig: ProjectsConfig = {
       ],
       links: {
         website: "",
-        github: null,
+        // playStore:
+        //   "https://play.google.com/store/apps/details?id=com.chi.fitnessStorm",
+        appStore: "https://apps.apple.com/de/app/ubcb2b/id6449262399?l=en-GB",
       },
       featured: true,
       category: "Mobile app",
+      references: [
+        {
+          id: "reference-6",
+          name: "Amer Al-Hosari",
+          link: "https://www.linkedin.com/in/amer-al-hosari/",
+        },
+      ],
     },
     {
       id: "project-7",
@@ -153,11 +197,22 @@ export const projectsConfig: ProjectsConfig = {
         { name: "Firebase", icon: "firebase" },
       ],
       links: {
-        website: "",
+        website: "https://fitnessstorm.org/en/home/",
+        playStore:
+          "https://play.google.com/store/apps/details?id=com.chi.fitnessStorm",
+        appStore:
+          "https://apps.apple.com/de/app/fitness-storm/id6463420120?l=en-GB",
         github: null,
       },
       featured: true,
       category: "Mobile app",
+      references: [
+        {
+          id: "reference-8",
+          name: "Ammar Al-Natour",
+          link: "https://www.linkedin.com/in/mohammedammaralnatour/",
+        },
+      ],
     },
   ],
 };

@@ -10,6 +10,13 @@ import { Button } from "@/components/ui/button";
 import { projectsConfig } from "@/config/projects.config";
 import type { Project } from "@/types";
 import { SkillChip } from "@/components/ui/skill-chip";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 function ProjectCard({ project, index }: { project: Project; index: number }) {
   const ref = useRef(null);
@@ -35,11 +42,11 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           <div className="absolute inset-0 bg-gradient-to-t from-card/90 via-transparent to-transparent" />
 
           {/* Featured Badge */}
-          {project.featured && (
+          {/* {project.featured && (
             <Badge className="absolute top-4 right-4 bg-primary/90 text-primary-foreground">
               Featured
             </Badge>
-          )}
+          )} */}
         </div>
 
         {/* Content */}
@@ -133,6 +140,56 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
               </Button>
             )}
           </div>
+
+          {/* {project.screenshots && project.screenshots.length > 0 && (
+            <div className="mt-4">
+              <Carousel className="w-full">
+                <CarouselContent>
+                  {project.screenshots.map((src, i) => (
+                    <CarouselItem
+                      key={`${project.id}-shot-${i}`}
+                      className="basis-2/3 sm:basis-1/2 lg:basis-1/3"
+                    >
+                      <div className="relative h-28 sm:h-32 rounded-md overflow-hidden border border-border">
+                        <Image
+                          src={src}
+                          alt={`${project.title} screenshot ${i + 1}`}
+                          fill
+                          sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw"
+                          className="object-cover object-center"
+                        />
+                      </div>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <CarouselPrevious className="-left-2" />
+                <CarouselNext className="-right-2" />
+              </Carousel>
+            </div>
+          )} */}
+
+          {project.references && project.references.length > 0 && (
+            <div className="mt-4">
+              <div className="text-xs text-muted-foreground mb-1">
+                References
+              </div>
+              <div className="flex flex-wrap items-center gap-2">
+                {project.references.map((ref) => (
+                  <Badge key={ref.id} variant="outline" className="text-xs">
+                    <Link
+                      href={ref.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1"
+                    >
+                      <ExternalLink className="h-3.5 w-3.5" />
+                      {ref.name}
+                    </Link>
+                  </Badge>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </motion.div>

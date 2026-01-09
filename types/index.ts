@@ -94,6 +94,12 @@ export interface ProjectTech {
   icon: string;
 }
 
+export interface ProjectReference {
+  id: string;
+  name: string;
+  link: string;
+}
+
 export interface Project {
   id: string;
   title: string;
@@ -105,6 +111,7 @@ export interface Project {
   links: ProjectLink;
   featured: boolean;
   category: string;
+  references?: ProjectReference[];
 }
 
 export interface ProjectsConfig {
