@@ -72,7 +72,7 @@ function DegreeCard({ degree, index }: { degree: Degree; index: number }) {
           </div>
         </div>
       </div>
-      <ExternalLink className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
+      {/* <ExternalLink className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" /> */}
     </motion.div>
   );
 }
