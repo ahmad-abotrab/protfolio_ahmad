@@ -39,11 +39,11 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
       initial={{ opacity: 0, y: 20 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="group"
+      className="group h-full"
     >
-      <div className="h-full bg-card border border-border rounded-xl p-6 hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5">
+      <div className="h-full bg-card border border-border rounded-xl p-3 sm:p-4 hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 min-h-[14rem] sm:min-h-[15rem] lg:min-h-[16rem] flex flex-col">
         <div
-          className="w-12 h-12 rounded-lg flex items-center justify-center mb-4 transition-transform group-hover:scale-110"
+          className="w-10 h-10 rounded-lg flex items-center justify-center mb-2 transition-transform group-hover:scale-110"
           style={{ backgroundColor: `${service.color}20` }}
         >
           {Icon && (
@@ -51,11 +51,11 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
           )}
         </div>
 
-        <h3 className="text-lg font-semibold text-foreground mb-2">
+        <h3 className="text-lg font-semibold text-foreground mb-1">
           {service.title}
         </h3>
 
-        <p className="text-muted-foreground text-sm leading-relaxed">
+        <p className="text-muted-foreground text-sm leading-snug">
           {service.description}
         </p>
       </div>
@@ -71,22 +71,29 @@ export function ServicesSection() {
   return (
     //py-20 lg:py-32
     <section id="services" className="" ref={ref}>
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-[calc(1rem+4%)] sm:px-[calc(1.5rem+4%)] lg:px-[calc(2rem+4%)]">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
-          className="text-center mb-12"
+          className="flex items-center gap-4 mb-8"
         >
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-4">
+          <div className="h-px flex-1 bg-border" />
+          <h2 className="text-2xl sm:text-3xl font-bold text-foreground">
             {title}
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            {subtitle}
-          </p>
+          <div className="h-px flex-1 bg-border" />
         </motion.div>
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.4, delay: 0.1 }}
+          className="text-muted-foreground text-lg max-w-2xl mx-auto mb-12 text-center"
+        >
+          {subtitle}
+        </motion.p>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
           {services.map((service, index) => (
             <ServiceCard key={service.id} service={service} index={index} />
           ))}

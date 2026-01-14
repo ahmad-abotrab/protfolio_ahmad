@@ -28,19 +28,9 @@ export function Footer() {
   return (
     <footer className="border-t border-border bg-card/50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-          {/* Branding */}
-          <div className="flex flex-col items-center md:items-start gap-2">
-            <Link href="#" className="text-lg font-bold text-foreground">
-              {personalConfig.name}
-            </Link>
-            <p className="text-sm text-muted-foreground">
-              {personalConfig.title}
-            </p>
-          </div>
-
+        <div className="flex flex-col md:flex-row items-center md:justify-between gap-6">
           {/* Quick Links */}
-          <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6">
+          <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 md:gap-6 w-full md:w-auto">
             {siteConfig.navigation.slice(0, 4).map((item) => (
               <Link
                 key={item.href}
@@ -53,7 +43,7 @@ export function Footer() {
           </div>
 
           {/* Social Links */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 w-full md:w-auto justify-center md:justify-end">
             {personalConfig.social.map((social) => {
               const Icon = iconMap[social.icon];
               return (

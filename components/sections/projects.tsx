@@ -28,9 +28,9 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       initial={{ opacity: 0, y: 30 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="group"
+      className="group h-full"
     >
-      <div className="bg-card border border-border rounded-xl overflow-hidden hover:border-primary/30 transition-all duration-300 hover:shadow-xl hover:shadow-primary/5">
+      <div className="bg-card border border-border rounded-xl overflow-hidden hover:border-primary/30 transition-all duration-300 hover:shadow-xl hover:shadow-primary/5 h-full flex flex-col min-h-[26rem] sm:min-h-[28rem] lg:min-h-[30rem]">
         {/* Project Image */}
         <div className="relative h-48 sm:h-56 overflow-hidden">
           <Image
@@ -50,7 +50,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
         </div>
 
         {/* Content */}
-        <div className="p-6">
+        <div className="p-6 flex flex-col flex-1">
           <div className="flex items-start justify-between gap-2 mb-2">
             <h3 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
               {project.title}
@@ -82,7 +82,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           </div>
 
           {/* Links */}
-          <div className="flex flex-wrap items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2 mt-auto">
             {project.links.website && (
               <Button
                 asChild
@@ -205,20 +205,27 @@ export function ProjectsSection() {
 
   return (
     <section id="projects" className="py-20 lg:py-32" ref={ref}>
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-[calc(1rem+4%)] sm:px-[calc(1.5rem+4%)] lg:px-[calc(2rem+4%)]">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
-          className="text-center mb-12"
+          className="flex items-center gap-4 mb-8"
         >
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-4">
+          <div className="h-px flex-1 bg-border" />
+          <h2 className="text-2xl sm:text-3xl font-bold text-foreground">
             {title}
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            {subtitle}
-          </p>
+          <div className="h-px flex-1 bg-border" />
         </motion.div>
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.4, delay: 0.1 }}
+          className="text-muted-foreground text-lg max-w-2xl mx-auto mb-12 text-center"
+        >
+          {subtitle}
+        </motion.p>
 
         <motion.div
           initial={{ opacity: 0.7 }}
@@ -226,7 +233,7 @@ export function ProjectsSection() {
           transition={{ duration: 1.8, repeat: Number.POSITIVE_INFINITY }}
           className="text-center mt-6"
         ></motion.div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
           {featuredProjects.map((project, index) => (
             <ProjectCard key={project.id} project={project} index={index} />
           ))}

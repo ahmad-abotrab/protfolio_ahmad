@@ -26,6 +26,7 @@ function TimelineItem({
     "HTML",
     "CSS",
     "Agile Methodologies",
+    "System analysis",
     "Data Management",
     "Data Analysis",
     "SQL Server",
@@ -129,13 +130,14 @@ export function ExperienceSection() {
 
   return (
     <section id="experience" className="py-10 lg:py-32 bg-card/30" ref={ref}>
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-[calc(1rem+4%)] sm:px-[calc(1.5rem+4%)] lg:px-[calc(2rem+4%)]">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
-          className="flex items-center gap-4 mb-12"
+          className="flex items-center gap-4 mb-8 max-w-3xl mx-auto"
         >
+          <div className="h-px flex-1 bg-border" />
           <h2 className="text-2xl sm:text-3xl font-bold text-foreground">
             {title}
           </h2>

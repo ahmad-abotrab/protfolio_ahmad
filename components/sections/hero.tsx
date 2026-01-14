@@ -61,7 +61,7 @@ export function HeroSection() {
       ref={heroRef}
       className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16"
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-[calc(1rem+4%)] sm:px-[calc(1.5rem+4%)] lg:px-[calc(2rem+4%)]">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Column - Text Content */}
           <motion.div

@@ -63,20 +63,27 @@ export function SkillsSection() {
 
   return (
     <section id="skills" className="py-20 lg:py-32 bg-card/30" ref={ref}>
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-[calc(1rem+4%)] sm:px-[calc(1.5rem+4%)] lg:px-[calc(2rem+4%)]">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
-          className="text-center mb-12"
+          className="flex items-center gap-4 mb-8"
         >
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-4">
+          <div className="h-px flex-1 bg-border" />
+          <h2 className="text-2xl sm:text-3xl font-bold text-foreground">
             {title}
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Technologies and tools I’ve mastered
-          </p>
+          <div className="h-px flex-1 bg-border" />
         </motion.div>
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.4, delay: 0.1 }}
+          className="text-muted-foreground text-lg max-w-2xl mx-auto mb-12 text-center"
+        >
+          Technologies and tools I’ve mastered
+        </motion.p>
 
         <div className="space-y-6">
           {categories.map((category, index) => (
