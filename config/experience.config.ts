@@ -16,10 +16,10 @@ export const experienceConfig: ExperienceConfig = {
       logo: "/brain_socket.png",
       companyUrl: "https://brain-socket.com/",
       description: [
-        "Integrated Mailer, SMS, and Registra=on systems using Symfony, MongoDB, and KaDa, ensuring seamless communica=on and suppor=ng over 1,000 daily user interac=ons.",
-        "Streamlined user account management processes across systems, reducing synchroniza=on errors by 25% through optimized creation, update, and permission handling.",
+        "Integrated Mailer, SMS, and Registration systems using Symfony, MongoDB, and KaDa, ensuring seamless communication and supporting over 1,000 daily user interactions.",
+        "Streamlined user account management processes across systems, reducing synchronization errors by 25% through optimized creation, update, and permission handling.",
         "Enhanced real-time synchronization between master and sub-systems, improving overall system consistency and boosting operational eﬃciency by 30%.",
-        "•	Scaled mother & baby e-commerce/community platform (momilly) from MVP → production (10K users); cut critical API latency from seconds → ~20ms; added Redis caching.",
+        "Scaled mother & baby e-commerce/community platform (momilly) from MVP → production (10K users); cut critical API latency from seconds → ~20ms; added Redis caching.",
       ],
       technologies: [
         "laravel",
@@ -59,8 +59,8 @@ export const experienceConfig: ExperienceConfig = {
     {
       id: "job-3",
       title: "Full Stack Developer",
-      company: "Software Solutions team",
-      companyType: "Software Agency",
+      company: "AM-team",
+      companyType: "Software soluation team",
       location: "Damascus, Syria",
       startDate: "April 2020",
       endDate: "January 2025",
