@@ -43,9 +43,8 @@ export const experienceConfig: ExperienceConfig = {
       logo: "/stratum.png",
       companyUrl: "https://www.linkedin.com/company/stratum-admin/",
       description: [
-        "Led evaluation of the legacy system and database schema; defined requirements, authored technical reports, and aligned vendors on solution fit",
-        "Supported hiring and delivery by shortlisting candidates, conducting technical interviews, and supervising implementation progress and quality",
-        "Managed critical migration steps: database extraction and conversion, overseeing data cleaning and preparation for transfer",
+        "Led evaluation of the legacy system and database schema for an existing electronic healthcare records system, defined requirements for a new system through technical reports, and vendors selection compatibility study.",
+        "Managed system migration steps including database extraction and conversion, overseeing data cleaning and preparation for +15K records.",
       ],
       technologies: [
         "Agile Methodologies",
