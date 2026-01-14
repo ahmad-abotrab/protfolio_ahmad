@@ -31,6 +31,7 @@ function TimelineItem({
     "Data Analysis",
     "SQL Server",
     "Data Security",
+    "codeigniter",
   ]);
 
   return (
