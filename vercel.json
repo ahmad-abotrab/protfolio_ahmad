@@ -2,6 +2,12 @@
     "redirects": [
         {
             "source": "/(.*)",
+            "has": [
+                {
+                    "type": "host",
+                    "value": "portfolio-ahmad-bay.vercel.app"
+                }
+            ],
             "destination": "https://ahmadabotrab.info/$1",
             "permanent": true
         }

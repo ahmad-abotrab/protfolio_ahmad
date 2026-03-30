@@ -6,6 +6,54 @@ export const projectsConfig: ProjectsConfig = {
 
   projects: [
     {
+      id: "project-10",
+      title: "Patient survival prediction",
+      description:
+        "Developed a machine learning model to predict patient survival rates based on medical history and treatment data.",
+
+      longDescription: "This project is a hands-on machine learning study using real ICU data to predict whether a patient will survive their hospital stay. It was built as a learning journey through the full ML pipeline — from raw data exploration all the way to model evaluation and interpretability",
+      image: "/patient_predict.svg",
+      screenshots: [],
+      technologies: [
+        // { name: "Machine Learning", icon: "machine learning" },
+        { name: "python", icon: "python" },
+      ],
+      links: {
+        website: "",
+        appStore: "",
+        playStore: "",
+        github: "https://github.com/ahmad-abotrab/patient_survival_prediction.git",
+      },
+      featured: true,
+      category: "Training project",
+      references: [
+
+      ],
+    },
+    {
+      id: "project-11",
+      title: "Arabic sentiment classification",
+      description: "Built a machine learning model to classify Arabic text into positive, negative, or neutral sentiment categories.",
+      longDescription: "A compact machine learning project developed for Arabic sentiment classification using classical NLP baselines. The goal is to build a reproducible text classification pipeline with documented preprocessing, model comparison, and error analysis.",
+      image: "/arabic_sentiment_classification_logo_v2.svg",
+      screenshots: [],
+      technologies: [
+        // { name: "Machine Learning", icon: "machine learning" },
+        { name: "python", icon: "python" },
+      ],
+      links: {
+        website: "",
+        appStore: "",
+        playStore: "",
+        github: "https://github.com/ahmad-abotrab/arabic_sentiment_classification.git",
+      },
+      featured: true,
+      category: "Training project",
+      references: [
+
+      ],
+    },
+    {
       id: "project-1",
       title: "Easy App – Healthcare Job Application",
       description:
