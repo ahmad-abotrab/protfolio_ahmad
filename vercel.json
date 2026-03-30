@@ -1,9 +1,0 @@
-{
-    "redirects": [
-        {
-            "source": "/(.*)",
-            "destination": "https://ahmadabotrab.info/$1",
-            "permanent": true
-        }
-    ]
-}
