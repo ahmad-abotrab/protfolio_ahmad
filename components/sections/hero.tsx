@@ -182,7 +182,7 @@ export function HeroSection() {
 
               <div className="w-64 h-64 sm:w-80 sm:h-80 rounded-full bg-gradient-to-br from-primary/20 to-primary/5 border-2 border-primary/30 relative overflow-hidden">
                 <Image
-                  src="/ahmad.png"
+                  src="/ahmad1.JPG"
                   alt={`${name} avatar`}
                   fill
                   sizes="(min-width:1024px) 20rem, 16rem"

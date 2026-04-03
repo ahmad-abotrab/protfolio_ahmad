@@ -8,6 +8,10 @@ import { ConstellationBackground } from "@/components/ui/constellation-backgroun
 import { Toaster } from "sonner";
 import "./globals.css";
 
+// ─── Toggle constellation background on / off ───────────────────────────────
+const SHOW_CONSTELLATION_BG = false
+// ────────────────────────────────────────────────────────────────────────────
+
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
@@ -76,7 +80,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <ConstellationBackground />
+          {SHOW_CONSTELLATION_BG && <ConstellationBackground />}
           <Toaster theme="system" richColors />
           {children}
         </ThemeProvider>
