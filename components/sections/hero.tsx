@@ -27,7 +27,7 @@ export function HeroSection() {
     }
 
     const chars = Array.from(name);
-    iRef.current = 0; // reset counter
+    iRef.current = 0;
 
     setTypedName("");
     setIsTyping(true);
@@ -168,7 +168,7 @@ export function HeroSection() {
             </motion.div>
           </motion.div>
 
-          {/* Right Column - Decorative Element */}
+          {/* Right Column - Profile Image */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}

@@ -2,32 +2,14 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import { useTheme } from "next-themes"
-import { Menu, X, Moon, Sun } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { Phone, Menu, X } from "lucide-react"
 import { siteConfig } from "@/config/site.config"
 import { personalConfig } from "@/config/personal.config"
 import { cn } from "@/lib/utils"
 
 export function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const { theme, setTheme } = useTheme()
-  const [mounted, setMounted] = useState(false)
   const [activeSection, setActiveSection] = useState<string>("home")
-
-  useEffect(() => {
-    setMounted(true)
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20)
-    }
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
-
-  const toggleTheme = () => {
-    setTheme(theme === "dark" ? "light" : "dark")
-  }
 
   useEffect(() => {
     const ids = ["home", ...siteConfig.navigation.map((n) => n.href.replace("#", ""))]
@@ -48,21 +30,20 @@ export function Navbar() {
   }, [])
 
   return (
-    <header
-      className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        // isScrolled ? "bg-background/80 backdrop-blur-md border-b border-border" : "bg-transparent",
-      )}
-    >
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background">
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
-          {/* Logo / Name */}
-          {/* <Link href="#" className="flex items-center gap-2 group">
-            <span className="text-lg font-bold text-foreground">{personalConfig.name}</span>
-            <span className="text-sm text-muted-foreground hidden sm:inline">{personalConfig.title}</span>
-          </Link> */}
 
-          {/* Desktop Navigation */}
+          {/* Logo — script font */}
+          <Link
+            href="#home"
+            className="text-2xl lg:text-3xl text-foreground leading-none shrink-0"
+            style={{ fontFamily: "var(--font-dancing), cursive" }}
+          >
+            {personalConfig.name.split(" ")[0]}
+          </Link>
+
+          {/* Desktop Navigation — old pill tabs style */}
           <div className="hidden lg:flex flex-1 items-center justify-center">
             <div className="px-2 py-1.5 rounded-full border border-border bg-card/60 shadow-sm backdrop-blur supports-[backdrop-filter]:bg-card/70">
               <div className="flex items-center gap-1">
@@ -99,30 +80,28 @@ export function Navbar() {
             </div>
           </div>
 
-          {/* Theme Toggle & Mobile Menu Button */}
-          {/* <div className="flex items-center gap-2">
-            {mounted && (
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={toggleTheme}
-                className="text-muted-foreground hover:text-foreground"
-                aria-label="Toggle theme"
-              >
-                {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
-              </Button>
-            )}
-
-            <Button
-              variant="ghost"
-              size="icon"
-              className="lg:hidden text-muted-foreground hover:text-foreground"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              aria-label="Toggle menu"
+          {/* Right: phone number + icon */}
+          <div className="hidden lg:flex items-center gap-4 shrink-0">
+            <span className="text-sm font-medium text-foreground tracking-wide">
+              {personalConfig.contact.phone}
+            </span>
+            <a
+              href={`mailto:${personalConfig.contact.email}`}
+              className="w-10 h-10 rounded-full border border-foreground/30 flex items-center justify-center hover:bg-foreground hover:text-background transition-colors"
+              aria-label="Contact"
             >
-              {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-            </Button>
-          </div> */}
+              <Phone className="h-4 w-4" />
+            </a>
+          </div>
+
+          {/* Mobile menu toggle */}
+          <button
+            className="lg:hidden p-2 text-foreground"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
         </div>
 
         {/* Mobile Navigation */}
