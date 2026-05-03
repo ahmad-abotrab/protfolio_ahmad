@@ -128,7 +128,16 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply text-foreground;
+    background-image:
+      linear-gradient(
+        color-mix(in oklch, var(--background) 82%, transparent),
+        color-mix(in oklch, var(--background) 82%, transparent)
+      ),
+      url('/texture.jpg');
+    background-size: auto;
+    background-repeat: repeat;
+    background-attachment: fixed;
   }
 }
 
@@ -152,3 +161,4 @@
 html {
   scroll-behavior: smooth;
 }
+
