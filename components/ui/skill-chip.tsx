@@ -35,7 +35,7 @@ export function SkillChip({ label, icon, className }: SkillChipProps) {
   return (
     <div
       className={cn(
-        "bg-muted/20 text-foreground border border-border inline-flex items-center gap-2 rounded-lg px-3 py-1.5 transition-colors hover:bg-muted/30",
+        "bg-muted/20 text-foreground border border-border inline-flex max-w-full min-w-0 items-center gap-2 rounded-lg px-3 py-1.5 transition-colors hover:bg-muted/30",
         className,
       )}
     >
@@ -45,9 +45,10 @@ export function SkillChip({ label, icon, className }: SkillChipProps) {
         alt={`${label} icon`}
         width={18}
         height={18}
+        className="shrink-0"
         style={{ display: "inline-block" }}
       />
-      <span className="text-sm">{label}</span>
+      <span className="min-w-0 truncate text-sm">{label}</span>
     </div>
   );
 }

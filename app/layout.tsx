@@ -62,13 +62,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className="light" suppressHydrationWarning>
       <body
         className={`${inter.variable} ${jetbrainsMono.variable} ${dancingScript.variable} font-sans antialiased`}
+        suppressHydrationWarning
       >
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
+          enableColorScheme={false}
+          enableSystem={false}
+          forcedTheme="light"
           disableTransitionOnChange
         >
           <Toaster theme="system" richColors />

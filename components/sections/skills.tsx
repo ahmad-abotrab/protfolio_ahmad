@@ -16,9 +16,13 @@ function SkillBar({ skill, index }: { skill: Skill; index: number }) {
       initial={{ opacity: 0, y: 10 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.3, delay: index * 0.04 }}
-      className="group"
+      className="group min-w-0"
     >
-      <SkillChip label={skill.name} icon={skill.icon} />
+      <SkillChip
+        label={skill.name}
+        icon={skill.icon}
+        className="h-10 w-full justify-start rounded-full px-3 sm:w-auto"
+      />
     </motion.div>
   );
 }
@@ -40,12 +44,12 @@ function SkillCategoryCard({
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: categoryIndex * 0.1 }}
     >
-      <div className="bg-card border border-border rounded-xl p-6 h-full hover:border-primary/30 transition-colors">
-        <div className="flex items-start gap-6">
-          <div className="w-48 shrink-0 text-sm font-medium text-muted-foreground">
+      <div className="h-full rounded-xl border border-border bg-card/90 p-5 transition-colors hover:border-primary/30 sm:p-6">
+        <div className="flex min-w-0 flex-col gap-4 sm:flex-row sm:items-start sm:gap-6">
+          <div className="text-base font-semibold text-foreground sm:w-48 sm:shrink-0 sm:text-sm sm:font-medium sm:text-muted-foreground">
             {category.name}
           </div>
-          <div className="flex flex-wrap gap-2">
+          <div className="grid min-w-0 grid-cols-2 gap-2 sm:flex sm:flex-1 sm:flex-wrap">
             {category.skills.map((skill, index) => (
               <SkillBar key={skill.name} skill={skill} index={index} />
             ))}
@@ -62,7 +66,7 @@ export function SkillsSection() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="skills" className="py-20 lg:py-32 bg-card/30" ref={ref}>
+    <section id="skills" className="py-16 lg:py-32" ref={ref}>
       <div className="container mx-auto px-[calc(1rem+4%)] sm:px-[calc(1.5rem+4%)] lg:px-[calc(2rem+4%)]">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -80,12 +84,12 @@ export function SkillsSection() {
           initial={{ opacity: 0, y: 10 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.4, delay: 0.1 }}
-          className="text-muted-foreground text-lg max-w-2xl mx-auto mb-12 text-center"
+          className="mx-auto mb-10 max-w-[20rem] text-center text-base leading-relaxed text-muted-foreground sm:mb-12 sm:max-w-2xl sm:text-lg"
         >
           Technologies and tools I’ve mastered
         </motion.p>
 
-        <div className="space-y-6">
+        <div className="space-y-4 sm:space-y-6">
           {categories.map((category, index) => (
             <div key={category.name}>
               <SkillCategoryCard category={category} categoryIndex={index} />

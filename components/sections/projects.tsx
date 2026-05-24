@@ -1,22 +1,41 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ExternalLink, Github, Apple, Play } from "lucide-react";
+import {
+  Apple,
+  BrainCircuit,
+  Database,
+  ExternalLink,
+  Github,
+  LayoutGrid,
+  Monitor,
+  Play,
+  Smartphone,
+  type LucideIcon,
+} from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { projectsConfig } from "@/config/projects.config";
-import type { Project } from "@/types";
+import type { Project, ProjectType } from "@/types";
 import { SkillChip } from "@/components/ui/skill-chip";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
+import { cn } from "@/lib/utils";
+
+type ProjectFilter = "all" | ProjectType;
+
+const projectTypeFilters: {
+  value: ProjectFilter;
+  label: string;
+  icon: LucideIcon;
+}[] = [
+  { value: "all", label: "All", icon: LayoutGrid },
+  { value: "mobile", label: "Mobile", icon: Smartphone },
+  { value: "web", label: "Web", icon: Monitor },
+  { value: "ai", label: "AI", icon: BrainCircuit },
+  { value: "data", label: "Data", icon: Database },
+];
 
 function ProjectCard({ project, index }: { project: Project; index: number }) {
   const ref = useRef(null);
@@ -198,10 +217,23 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 
 export function ProjectsSection() {
   const { title, subtitle, projects } = projectsConfig;
+  const [activeFilter, setActiveFilter] = useState<ProjectFilter>("all");
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   const featuredProjects = projects.filter((p) => p.featured);
+  const filterOptions = projectTypeFilters.map((filter) => ({
+    ...filter,
+    count:
+      filter.value === "all"
+        ? featuredProjects.length
+        : featuredProjects.filter((project) => project.type === filter.value)
+            .length,
+  }));
+  const filteredProjects =
+    activeFilter === "all"
+      ? featuredProjects
+      : featuredProjects.filter((project) => project.type === activeFilter);
 
   return (
     <section id="projects" className="py-20 lg:py-32" ref={ref}>
@@ -228,13 +260,49 @@ export function ProjectsSection() {
         </motion.p>
 
         <motion.div
-          initial={{ opacity: 0.7 }}
-          animate={isInView ? { opacity: [0.7, 1, 0.7] } : {}}
-          transition={{ duration: 1.8, repeat: Number.POSITIVE_INFINITY }}
-          className="text-center mt-6"
-        ></motion.div>
+          initial={{ opacity: 0, y: 10 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.4, delay: 0.2 }}
+          className="mx-auto mb-10 flex w-full max-w-full justify-start gap-1 overflow-x-auto rounded-full border border-border bg-card/70 p-1 shadow-sm backdrop-blur [scrollbar-width:none] sm:w-fit sm:justify-center [&::-webkit-scrollbar]:hidden"
+          role="group"
+          aria-label="Filter projects by type"
+        >
+          {filterOptions.map(({ value, label, icon: Icon, count }) => {
+            const isActive = activeFilter === value;
+
+            return (
+              <Button
+                key={value}
+                type="button"
+                variant={isActive ? "default" : "ghost"}
+                size="sm"
+                aria-pressed={isActive}
+                disabled={count === 0}
+                onClick={() => setActiveFilter(value)}
+                className={cn(
+                  "h-9 shrink-0 rounded-full gap-2 px-3",
+                  !isActive &&
+                    "text-muted-foreground hover:bg-muted/40 hover:text-foreground",
+                )}
+              >
+                <Icon className="h-3.5 w-3.5" />
+                <span>{label}</span>
+                <span
+                  className={cn(
+                    "rounded-full px-1.5 py-0.5 text-[10px] leading-none",
+                    isActive
+                      ? "bg-primary-foreground/20 text-primary-foreground"
+                      : "bg-muted text-muted-foreground",
+                  )}
+                >
+                  {count}
+                </span>
+              </Button>
+            );
+          })}
+        </motion.div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
-          {featuredProjects.map((project, index) => (
+          {filteredProjects.map((project, index) => (
             <ProjectCard key={project.id} project={project} index={index} />
           ))}
         </div>

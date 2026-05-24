@@ -100,6 +100,8 @@ export interface ProjectReference {
   link: string;
 }
 
+export type ProjectType = "mobile" | "web" | "ai" | "data";
+
 export interface Project {
   id: string;
   title: string;
@@ -111,6 +113,7 @@ export interface Project {
   links: ProjectLink;
   featured: boolean;
   category: string;
+  type: ProjectType;
   references?: ProjectReference[];
 }
 

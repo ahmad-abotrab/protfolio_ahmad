@@ -3,15 +3,15 @@ import type { PersonalConfig } from "@/types";
 export const personalConfig: PersonalConfig = {
   name: "Ahmad Abotrab",
   title: "",
-  subtitle: "Software Engineer | Data Analyst",
+  subtitle: "Data Scientist | Data Analyst",
   location: "Damascus,Syria",
 
   hero: {
     greeting: "Hi, I'm",
-    headline: "Building scalable web applications",
+    headline: "Data Scientist",
     description:
-      "A reliable developer with 4+ years of experience crafting pixel-perfect, accessible digital experiences. I specialize in full-stack development, from elegant frontends to robust backend systems.",
-    ctaButton: { label: "Hire me", href: "#contact" },
+      "A software engineer focused on building excellent backend systems, with a growing data science interest in healthcare, bioscience, and data-driven solutions that improve real-world outcomes.",
+    ctaButton: { label: "Contact Me", href: "#contact" },
     secondaryButton: { label: "View Projects", href: "#projects" },
   },
 

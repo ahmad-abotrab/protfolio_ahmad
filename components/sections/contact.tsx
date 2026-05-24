@@ -29,7 +29,7 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-20 lg:py-32 bg-card/30" ref={ref}>
+    <section id="contact" className="py-20 lg:py-32" ref={ref}>
       <div className="container mx-auto px-[calc(1rem+4%)] sm:px-[calc(1.5rem+4%)] lg:px-[calc(2rem+4%)]">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

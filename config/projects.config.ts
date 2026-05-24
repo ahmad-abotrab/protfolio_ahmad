@@ -26,6 +26,7 @@ export const projectsConfig: ProjectsConfig = {
       },
       featured: true,
       category: "Training project",
+      type: "data",
       references: [
 
       ],
@@ -49,6 +50,7 @@ export const projectsConfig: ProjectsConfig = {
       },
       featured: true,
       category: "Training project",
+      type: "ai",
       references: [
 
       ],
@@ -76,6 +78,7 @@ export const projectsConfig: ProjectsConfig = {
       },
       featured: true,
       category: "Mobile App",
+      type: "mobile",
       references: [
         {
           id: "reference-1",
@@ -108,6 +111,7 @@ export const projectsConfig: ProjectsConfig = {
       },
       featured: true,
       category: "Web app",
+      type: "web",
       references: [
         {
           id: "reference-2",
@@ -136,6 +140,7 @@ export const projectsConfig: ProjectsConfig = {
       },
       featured: true,
       category: "Mobile App",
+      type: "mobile",
       references: [
         {
           id: "reference-3",
@@ -166,6 +171,7 @@ export const projectsConfig: ProjectsConfig = {
       },
       featured: true,
       category: "Mobile App",
+      type: "mobile",
       references: [
         {
           id: "reference-6",
@@ -195,6 +201,7 @@ export const projectsConfig: ProjectsConfig = {
       },
       featured: true,
       category: "Mobile app",
+      type: "mobile",
       references: [
         {
           id: "reference-5",
@@ -224,6 +231,7 @@ export const projectsConfig: ProjectsConfig = {
       },
       featured: true,
       category: "Mobile app",
+      type: "mobile",
       references: [
         {
           id: "reference-6",
@@ -254,6 +262,7 @@ export const projectsConfig: ProjectsConfig = {
       },
       featured: true,
       category: "Mobile app",
+      type: "mobile",
       references: [
         {
           id: "reference-8",
